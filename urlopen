@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+use strict;
+use utf8;
+
+my $BROWSER = '/usr/bin/firefox';
+
+my $url = $ARGV[0];
+$url =~ s/#//;
+$url =~ s/\//#/;
+
+if($ARGV[0] =~ /^#[0-9]{1,8}/) {
+    exec $BROWSER, 'juick.com/' . $url
+} elsif($ARGV[0] =~ /^#[a-z]{1,8}/) {
+    exec $BROWSER, 'psto.net/' . $url
+} else {
+    exec $BROWSER, $ARGV[0]
+}
+
